@@ -1,4 +1,4 @@
-spackage com.example.finalprogrmacion;
+package com.example.finalprogrmacion;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
