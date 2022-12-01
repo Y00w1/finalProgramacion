@@ -35,4 +35,7 @@ public class Member extends User{
         this.height = height;
         this.months = months;
     }
+
+    public Member() {
+    }
 }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="620.0" maxWidth="1030.0" minHeight="620.0" minWidth="1030.0" prefHeight="620.0" prefWidth="1030.0" stylesheets="@../../../styles/styleLogin.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane layoutY="-1.0" prefHeight="620.0" prefWidth="1030.0">
+         <center>
+            <VBox opacity="0.91" prefHeight="626.0" prefWidth="501.0" style="-fx-background-color: #141312;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Iniciar Sesión" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="50.0" top="220.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Impact" size="31.0" />
+                     </font>
+                  </Label>
+                  <TextField promptText="Usuario">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="50.0" right="50.0" top="5.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Impact" size="15.0" />
+                     </font>
+                  </TextField>
+                  <TextField promptText="Contraseña">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="50.0" right="50.0" top="5.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Impact" size="15.0" />
+                     </font>
+                  </TextField>
+               </children></VBox>
+         </center>
+         <left>
+            <AnchorPane id="bg" prefHeight="620.0" prefWidth="536.0" BorderPane.alignment="CENTER" />
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>

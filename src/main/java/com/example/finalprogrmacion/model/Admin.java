@@ -1,5 +1,7 @@
 package com.example.finalprogrmacion.model;
 
-public class Admin {
-
+public class Admin extends User{
+    public Admin() {
+        super();
+    }
 }
