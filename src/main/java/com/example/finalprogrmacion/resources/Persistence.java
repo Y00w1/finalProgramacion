@@ -25,7 +25,7 @@ public class Persistence {
         UtilDoc.saveDoc(FILE_PATH_ADMIN, content, false);
     }
 
-    //Loading the clients based on the doc .txt
+    //Loading the admins based on the doc .txt
     public static ArrayList<Admin> loadAdmins() throws FileNotFoundException, IOException{
 
         ArrayList<Admin> admins = new ArrayList<>();
@@ -58,7 +58,7 @@ public class Persistence {
         UtilDoc.saveDoc(FILE_PATH_ADMIN, content, false);
     }
 
-    //Loading the clients based on the doc .txt
+    //Loading the members based on the doc .txt
     public static ArrayList<Member> loadMembers() throws FileNotFoundException, IOException{
 
         ArrayList<Member> members = new ArrayList<>();

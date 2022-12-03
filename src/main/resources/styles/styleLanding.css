@@ -2,3 +2,7 @@
 -fx-background-image:url('../imgCss/bgLanding.png');
 -fx-background-size:cover;
 }
+#buttons:hover{
+    -fx-background-color:#4144AD;
+    -fx-opacity:0.3;
+}
