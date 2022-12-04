@@ -44,4 +44,5 @@ public class Exercise {
         this.calories = calories;
         this.duration = duration;
     }
+    public Exercise() {}
 }

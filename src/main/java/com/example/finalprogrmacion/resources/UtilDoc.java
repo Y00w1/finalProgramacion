@@ -1,10 +1,13 @@
 package com.example.finalprogrmacion.resources;
 
+import java.beans.XMLEncoder;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.concurrent.CompletableFuture;
+import java.beans.XMLDecoder;
 
 public class UtilDoc {
+
+    //Persistence in .txt
     public static ArrayList<String> readDoc(String path) throws IOException{
         ArrayList<String> content = new ArrayList();
         FileReader fr = new FileReader(path);
@@ -26,4 +29,22 @@ public class UtilDoc {
         fw.close();
     }
 
+    //Persistence in .xml
+    public static Object loadXMLSerializedResource(String path) throws IOException {
+        XMLDecoder myXMLDecoder;
+        Object XMLObject;
+
+        myXMLDecoder = new XMLDecoder(new FileInputStream(path));
+        XMLObject = myXMLDecoder.readObject();
+        myXMLDecoder.close();
+        return XMLObject;
+    }
+
+    public static void saveXMLSerializedResource(String path, Object obj) throws IOException {
+        XMLEncoder XMLCodifier;
+
+        XMLCodifier = new XMLEncoder(new FileOutputStream(path));
+        XMLCodifier.writeObject(obj);
+        XMLCodifier.close();
+    }
 }
