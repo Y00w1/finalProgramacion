@@ -22,6 +22,10 @@ public class ModelFactoryController {
     //Functions
 
     //Scenes buttons
+    //Landing
+    public void switchToLandingScene(ActionEvent event) throws IOException {
+        gymService.getSceneService().switchToLandingScene(event);
+    }
     //Exercise
     public void switchToExerciseScene(ActionEvent event) throws IOException {
         gymService.getSceneService().switchToExerciseScene(event);
@@ -37,6 +41,14 @@ public class ModelFactoryController {
     //Session
     public void switchToSessionScene(ActionEvent event) throws IOException {
         gymService.getSceneService().switchToSessionScene(event);
+    }
+
+    //Login
+    public void loadAdmins(){
+        gymService.getLoginService().loadAdmins();
+    }
+    public Boolean verifyCredentials(String username, String password){
+        return gymService.getLoginService().verifyCredentials(username, password);
     }
 
 }
