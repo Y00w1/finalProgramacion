@@ -1,15 +1,17 @@
 package com.example.finalprogrmacion.model;
 
 public class MemberDTO {
+    private String ID;
     private String Name;
     private Double weight;
     private Double height;
-    private Integer months;
+    private Integer age;
 
-    public MemberDTO(String name, Double weight, Double height, Integer months) {
-        Name = name;
+    public MemberDTO(String ID, String name, Double weight, Double height, Integer age) {
+        this.ID = ID;
+        this.Name = name;
         this.weight = weight;
         this.height = height;
-        this.months = months;
+        this.age = age;
     }
 }

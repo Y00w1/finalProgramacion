@@ -3,7 +3,7 @@ package com.example.finalprogrmacion.model;
 public class Member extends User{
     private Double weight;
     private Double height;
-    private Integer months;
+    private Integer age;
 
     public Double getWeight() {
         return weight;
@@ -21,19 +21,19 @@ public class Member extends User{
         this.height = height;
     }
 
-    public Integer getMonths() {
-        return months;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setMonths(Integer months) {
-        this.months = months;
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
-    public Member(String ID, String name, String lastName, String email, String password, Double weight, Double height, Integer months) {
+    public Member(String ID, String name, String lastName, String email, String password, Double weight, Double height, Integer age) {
         super(ID, name, lastName, email, password);
         this.weight = weight;
         this.height = height;
-        this.months = months;
+        this.age = age;
     }
 
     public Member() {

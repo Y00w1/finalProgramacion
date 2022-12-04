@@ -1,7 +1,12 @@
 package com.example.finalprogrmacion.controller;
 
+import com.example.finalprogrmacion.model.Member;
 import com.example.finalprogrmacion.service.impl.GymServiceImpl;
+import com.example.finalprogrmacion.validator.InputException;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
@@ -49,6 +54,25 @@ public class ModelFactoryController {
     }
     public Boolean verifyCredentials(String username, String password){
         return gymService.getLoginService().verifyCredentials(username, password);
+    }
+
+    //Members
+    public void createMember(String ID, String name, String lastName, String email, String password, String weight, String height, String age) throws IOException, InputException {
+        gymService.getMemberService().addMember(ID, name, lastName, email, password, weight, height, age);
+    }
+    public void loadMembers(){
+        gymService.getMemberService().loadMembers();
+    }
+    public void searchMember(FilteredList<Member> filteredlist, TextField textField){
+        gymService.getMemberService().sortByName(filteredlist, textField);
+    }
+    //Filling the observableList
+    public ObservableList<Member> fillObLiMembers(){
+        return gymService.getMemberService().fillObLiMembers();
+    }
+    //Delete
+    public void deleteMember(String ID) throws IOException {
+        gymService.getMemberService().deleteMember(ID);
     }
 
 }
