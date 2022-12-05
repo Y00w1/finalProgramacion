@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.PasswordField?>
 <AnchorPane maxHeight="620.0" maxWidth="1030.0" minHeight="620.0" minWidth="1030.0" prefHeight="620.0"
             prefWidth="1030.0" stylesheets="@../../../styles/styleLogin.css" xmlns="http://javafx.com/javafx/18"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalprogrmacion.controller.LoginController">
@@ -40,14 +41,14 @@
                   <Insets left="50.0"/>
                </VBox.margin>
             </Label>
-            <TextField fx:id="txtPassword" promptText="Contraseña">
+            <PasswordField fx:id="txtPassword" promptText="Contraseña">
                <VBox.margin>
                   <Insets bottom="5.0" left="50.0" right="50.0" top="5.0"/>
                </VBox.margin>
                <font>
                   <Font name="Impact" size="15.0"/>
                </font>
-            </TextField>
+            </PasswordField>
             <Label fx:id="lblPassword" textFill="#ff5555">
                <font>
                   <Font name="Impact" size="12.0"/>

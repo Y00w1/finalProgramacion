@@ -154,6 +154,8 @@ public class MemberController implements Initializable {
     void btnEdit(ActionEvent event) throws InputException, IOException {
         mfc.editMember(txtID.getText(), txtName.getText(), txtLastName.getText(), txtEmail.getText(),
                 txtPassword.getText(),txtWeight.getText(), txtHeight.getText(), txtAge.getText());
+        membersObList = mfc.fillObLiMembers();
+        tbMember.setItems(membersObList);
     }
 
     //Search
@@ -168,6 +170,8 @@ public class MemberController implements Initializable {
     @FXML
     void deleteMember(ActionEvent event) throws IOException {
         mfc.deleteMember(txtID.getText());
+        membersObList = mfc.fillObLiMembers();
+        tbMember.setItems(membersObList);
     }
 
 }

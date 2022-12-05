@@ -1,5 +1,6 @@
 package com.example.finalprogrmacion.controller;
 
+import com.example.finalprogrmacion.model.Exercise;
 import com.example.finalprogrmacion.model.Member;
 import com.example.finalprogrmacion.service.impl.GymServiceImpl;
 import com.example.finalprogrmacion.validator.InputException;
@@ -79,6 +80,38 @@ public class ModelFactoryController {
     //Filling the observableList
     public ObservableList<Member> fillObLiMembers(){
         return gymService.getMemberService().fillObLiMembers();
+    }
+
+    //Exercises
+    //Fill the Observable List
+    public ObservableList<Exercise> fillObLiExercises(){
+        return gymService.getExerciseService().fillObLiExercises();
+    }
+
+    //Persistence
+    //Load
+    public void loadExercises(){
+        gymService.getExerciseService().loadExercises();
+    }
+
+    //CRUD
+    //Create
+    public void createExercise(String id, String name, String calories, String duration) throws InputException, IOException {
+        gymService.getExerciseService().createExercise(id, name, calories, duration);
+    }
+    //Edit
+    public void editExercise(String id, String name, String calories, String duration) throws InputException, IOException {
+        gymService.getExerciseService().editExercise(id, name, calories, duration);
+    }
+
+    //Delete
+    public void deleteExercise(String id) throws IOException {
+        gymService.getExerciseService().deleteExercise(id);
+    }
+
+    //Search
+    public void sortExercise(FilteredList<Exercise> filteredList, TextField textField){
+        gymService.getExerciseService().sortExercise(filteredList, textField);
     }
 
 

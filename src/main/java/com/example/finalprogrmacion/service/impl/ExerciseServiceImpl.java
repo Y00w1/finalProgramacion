@@ -43,6 +43,7 @@ public class ExerciseServiceImpl implements ExerciseService {
     public void createExercise(String id, String name, String calories, String duration) throws IOException, InputException {
         inpVal.doubleInput(calories);
         inpVal.doubleInput(duration);
+        inpVal.emptyExercise(id, name, calories, duration);
         exercises.put(id, new Exercise(id, name, Double.parseDouble(calories), Double.parseDouble(duration)));
     }
 
@@ -51,6 +52,7 @@ public class ExerciseServiceImpl implements ExerciseService {
     public void editExercise(String id, String name, String calories, String duration) throws IOException, InputException {
         inpVal.doubleInput(calories);
         inpVal.doubleInput(duration);
+        inpVal.emptyExercise(id, name, calories, duration);
         exercises.replace(id, new Exercise(id, name, Double.parseDouble(calories), Double.parseDouble(duration)));
         Persistence.saveExercises(exercises);
     }
@@ -64,7 +66,7 @@ public class ExerciseServiceImpl implements ExerciseService {
 
     //Sort
     @Override
-    public void sortExercise(FilteredList<Member> filteredList, TextField textField) {
+    public void sortExercise(FilteredList<Exercise> filteredList, TextField textField) {
         textField.textProperty().addListener((prop, old, text)->{
             filteredList.setPredicate(element ->{
                 if (text == null || text.isEmpty()) return true;

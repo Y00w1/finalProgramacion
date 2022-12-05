@@ -45,6 +45,7 @@ public class MemberServiceImpl implements MemberService {
         inpVal.doubleInput(weight);
         inpVal.doubleInput(height);
         inpVal.intInput(age);
+        inpVal.emptyMember(ID, name, lastName, email, password, weight, height, age);
 
         membersHashMap.put(ID, new Member(ID, name, lastName, email, password,Double.parseDouble(weight) , Double.parseDouble(height), Integer.parseInt(age)));
         Persistence.saveMembers(membersHashMap);
@@ -87,6 +88,8 @@ public class MemberServiceImpl implements MemberService {
         inpVal.doubleInput(weight);
         inpVal.doubleInput(height);
         inpVal.intInput(age);
+        inpVal.emptyMember(ID, name, lastName, email, password, weight, height, age);
+
         membersHashMap.replace(ID, new Member(ID, name, lastName, email, password, Double.parseDouble(weight), Double.parseDouble(height), Integer.parseInt(age)) );
         Persistence.saveMembers(membersHashMap);
     }

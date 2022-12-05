@@ -1,5 +1,7 @@
 package com.example.finalprogrmacion.validator;
 
+import java.util.ArrayList;
+
 public class InputsVal {
 
     //Inputs that only allow positive Integer
@@ -35,5 +37,18 @@ public class InputsVal {
         }
     }
 
+    //Empty inputs
+    //member
+    public void emptyMember(String ID, String name, String lastName, String email, String password, String weight, String height, String age) throws InputException{
+        if(ID.isEmpty() || name.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || weight.isEmpty() || height.isEmpty() || age.isEmpty()){
+            throw new InputException("No pueden quedar campos vacios");
+        }
+    }
+    //Exercise
+    public void emptyExercise(String id, String name, String calories, String duration) throws InputException{
+        if(id.isEmpty() || name.isEmpty() || calories.isEmpty() || duration.isEmpty()){
+            throw new InputException("No pueden quedar campos vacios");
+        }
+    }
 
 }

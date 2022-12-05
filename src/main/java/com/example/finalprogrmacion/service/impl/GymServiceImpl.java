@@ -23,7 +23,7 @@ public class GymServiceImpl {
     public MemberService getMemberService(){
         return memberService;
     }
-    public ExerciseService exerciseService(){
+    public ExerciseService getExerciseService(){
         return exerciseService;
     }
     public SceneService getSceneService() {

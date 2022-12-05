@@ -15,5 +15,5 @@ public interface ExerciseService {
     void createExercise(String id, String name, String calories, String duration)throws IOException, InputException;
     void editExercise(String id, String name, String calories, String duration)throws IOException, InputException;
     void deleteExercise(String id)throws IOException;
-    void sortExercise(FilteredList<Member> filteredList, TextField textField);
+    void sortExercise(FilteredList<Exercise> filteredList, TextField textField);
 }

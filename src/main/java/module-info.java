@@ -6,5 +6,6 @@ module com.example.finalprogrmacion {
 
     opens com.example.finalprogrmacion to javafx.fxml;
     opens com.example.finalprogrmacion.controller to javafx.fxml;
+    opens com.example.finalprogrmacion.model to javafx.base;
     exports com.example.finalprogrmacion;
 }
