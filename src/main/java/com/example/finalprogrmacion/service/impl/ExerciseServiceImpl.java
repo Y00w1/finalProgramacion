@@ -45,6 +45,7 @@ public class ExerciseServiceImpl implements ExerciseService {
         inpVal.doubleInput(duration);
         inpVal.emptyExercise(id, name, calories, duration);
         exercises.put(id, new Exercise(id, name, Double.parseDouble(calories), Double.parseDouble(duration)));
+        Persistence.saveExercises(exercises);
     }
 
     //Edit

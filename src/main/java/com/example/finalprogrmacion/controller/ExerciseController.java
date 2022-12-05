@@ -48,7 +48,6 @@ public class ExerciseController implements Initializable {
     //
     ModelFactoryController mfc = ModelFactoryController.getInstance();
     ObservableList<Exercise> exercisesObList = FXCollections.observableArrayList();
-    private final InputsVal inpVal = new InputsVal();
 
     //
     @Override

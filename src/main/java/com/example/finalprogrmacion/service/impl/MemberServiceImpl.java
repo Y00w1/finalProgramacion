@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.TextField;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -88,7 +89,17 @@ public class MemberServiceImpl implements MemberService {
         inpVal.doubleInput(weight);
         inpVal.doubleInput(height);
         inpVal.intInput(age);
-        inpVal.emptyMember(ID, name, lastName, email, password, weight, height, age);
+        try{
+            inpVal.emptyMember(ID, name, lastName, email, password, weight, height, age);
+        }catch(InputException e){
+            JOptionPane.showMessageDialog(null, "No pueden quedar campos vacios", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+
+        try{
+            inpVal.memberPassword(password, ID, membersHashMap);
+        }catch(InputException e){
+            JOptionPane.showMessageDialog(null, "La contraseña no se puede modificar", "Error", JOptionPane.WARNING_MESSAGE);
+        }
 
         membersHashMap.replace(ID, new Member(ID, name, lastName, email, password, Double.parseDouble(weight), Double.parseDouble(height), Integer.parseInt(age)) );
         Persistence.saveMembers(membersHashMap);

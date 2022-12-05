@@ -3,41 +3,42 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-
+<?import javafx.scene.control.PasswordField?>
 <AnchorPane maxHeight="620.0" maxWidth="1030.0" minHeight="620.0" minWidth="1030.0" prefHeight="620.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalprogrmacion.controller.TrainerController">
    <children>
       <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="620.0" prefWidth="1040.0">
          <top>
-            <HBox prefHeight="77.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <HBox prefHeight="77.0" prefWidth="1040.0" BorderPane.alignment="CENTER">
                <children>
                   <Label text="Label">
                      <HBox.margin>
                         <Insets left="70.0" right="5.0" top="30.0" />
                      </HBox.margin>
                   </Label>
-                  <Button mnemonicParsing="false" text="Ejercico">
+                  <Button mnemonicParsing="false" onAction="#switchToExerciseScene" text="Ejercico">
                      <HBox.margin>
                         <Insets left="15.0" right="5.0" top="27.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Miembros">
+                  <Button mnemonicParsing="false" onAction="#switchToMemberScene" text="Miembros">
                      <HBox.margin>
                         <Insets left="15.0" right="5.0" top="27.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Sesiones">
+                  <Button mnemonicParsing="false" onAction="#switchToSessionScene" text="Sesiones">
                      <HBox.margin>
                         <Insets left="15.0" right="5.0" top="27.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Entrenadores">
+                  <Button disable="true" mnemonicParsing="false" text="Entrenadores">
                      <HBox.margin>
                         <Insets left="15.0" right="5.0" top="27.0" />
                      </HBox.margin>
@@ -48,46 +49,80 @@
          <center>
             <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField promptText="ID">
+                  <TextField fx:id="txtID" promptText="ID">
                      <VBox.margin>
-                        <Insets bottom="10.0" left="100.0" right="150.0" top="80.0" />
+                        <Insets bottom="10.0" left="30.0" right="50.0" top="60.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField promptText="Nombre">
+                  <TextField fx:id="txtName" promptText="Nombre">
                      <VBox.margin>
-                        <Insets bottom="10.0" left="100.0" right="150.0" top="10.0" />
+                        <Insets bottom="10.0" left="30.0" right="50.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField promptText="Apellido">
+                  <TextField fx:id="txtLastName" promptText="Apellido">
                      <VBox.margin>
-                        <Insets bottom="10.0" left="100.0" right="150.0" top="10.0" />
+                        <Insets bottom="10.0" left="30.0" right="50.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField promptText="Email">
+                  <TextField fx:id="txtEmail" promptText="Email">
                      <VBox.margin>
-                        <Insets bottom="10.0" left="100.0" right="150.0" top="10.0" />
+                        <Insets bottom="10.0" left="30.0" right="50.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField promptText="Contraseña">
+                  <PasswordField fx:id="txtPassword" promptText="Contraseña">
                      <VBox.margin>
-                        <Insets bottom="10.0" left="100.0" right="150.0" top="10.0" />
+                        <Insets bottom="10.0" left="30.0" right="50.0" top="10.0" />
+                     </VBox.margin>
+                  </PasswordField>
+                  <TextField fx:id="txtMonths" promptText="Meses">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="30.0" right="50.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField promptText="Meses">
+                  <TextField fx:id="txtSalary" promptText="Salario">
                      <VBox.margin>
-                        <Insets bottom="10.0" left="100.0" right="150.0" top="10.0" />
+                        <Insets bottom="10.0" left="30.0" right="50.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField promptText="Salario">
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="100.0" right="150.0" top="10.0" />
-                     </VBox.margin>
-                  </TextField>
+                  <HBox prefHeight="43.0" prefWidth="505.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#createTrainer" text="Crear">
+                           <HBox.margin>
+                              <Insets left="160.0" right="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#editTrainer" text="Editar">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#deleteTrainer" text="Borrar">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </center>
          <left>
-            <Pane prefHeight="520.0" prefWidth="350.0" BorderPane.alignment="CENTER" />
+            <VBox prefHeight="543.0" prefWidth="535.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="txtFilterName" onAction="#filterName" promptText="Filtrar por nombre" />
+                  <TableView fx:id="tbTrainer" onMouseClicked="#selectTrainer" prefHeight="499.0" prefWidth="535.0">
+                    <columns>
+                      <TableColumn fx:id="colID" prefWidth="58.0" text="ID" />
+                      <TableColumn fx:id="colName" prefWidth="185.0" text="Nombre" />
+                        <TableColumn fx:id="colMonths" prefWidth="107.0" text="Meses" />
+                        <TableColumn fx:id="colSalary" prefWidth="184.0" text="Salario" />
+                    </columns>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </TableView>
+               </children>
+            </VBox>
          </left>
       </BorderPane>
    </children>

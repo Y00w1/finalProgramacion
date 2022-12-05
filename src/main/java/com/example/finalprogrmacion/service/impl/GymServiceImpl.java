@@ -1,16 +1,14 @@
 package com.example.finalprogrmacion.service.impl;
 
 import com.example.finalprogrmacion.SceneController;
-import com.example.finalprogrmacion.service.ExerciseService;
-import com.example.finalprogrmacion.service.LoginService;
-import com.example.finalprogrmacion.service.MemberService;
-import com.example.finalprogrmacion.service.SceneService;
+import com.example.finalprogrmacion.service.*;
 
 public class GymServiceImpl {
     private final MemberService memberService;
     private final ExerciseService exerciseService;
     private final SceneService sceneService;
     private final LoginService loginService;
+    private final TrainerService trainerService;
 
 
     public GymServiceImpl(){
@@ -18,6 +16,7 @@ public class GymServiceImpl {
         this.exerciseService = new ExerciseServiceImpl();
         this.sceneService = new SceneController();
         this.loginService = new LoginServiceImpl();
+        this.trainerService = new TrainerServiceImpl();
     }
 
     public MemberService getMemberService(){
@@ -30,4 +29,7 @@ public class GymServiceImpl {
         return sceneService;
     }
     public LoginService getLoginService() {return loginService;}
+    public TrainerService getTrainerService() {
+        return trainerService;
+    }
 }

@@ -2,6 +2,8 @@ package com.example.finalprogrmacion.controller;
 
 import com.example.finalprogrmacion.model.Exercise;
 import com.example.finalprogrmacion.model.Member;
+import com.example.finalprogrmacion.model.Trainer;
+import com.example.finalprogrmacion.service.ModelFactoryControllerService;
 import com.example.finalprogrmacion.service.impl.GymServiceImpl;
 import com.example.finalprogrmacion.validator.InputException;
 import javafx.collections.ObservableList;
@@ -11,7 +13,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class ModelFactoryController {
+public class ModelFactoryController implements ModelFactoryControllerService {
     GymServiceImpl gymService;
     private static class SingletonHolder{
         private final static ModelFactoryController eINSTANCE = new ModelFactoryController();
@@ -112,6 +114,42 @@ public class ModelFactoryController {
     //Search
     public void sortExercise(FilteredList<Exercise> filteredList, TextField textField){
         gymService.getExerciseService().sortExercise(filteredList, textField);
+    }
+
+    //TRAINERS
+
+    //OBSERVABLE LIST
+    @Override
+    public ObservableList<Trainer> fillObLiTrainers() {
+        return gymService.getTrainerService().fillObLiTrainers();
+    }
+
+    //PERSISTENCE
+    @Override
+    public void loadTrainers() {
+        gymService.getTrainerService().loadTrainers();
+    }
+
+    //CRUD
+    //CREATE
+    @Override
+    public void createTrainer(String ID, String name, String lastName, String email, String password, String months, String salary) throws InputException, IOException {
+        gymService.getTrainerService().createTrainer(ID, name, lastName, email, password, months, salary);
+    }
+    //EDIT
+    @Override
+    public void editTrainer(String ID, String name, String lastName, String email, String password, String months, String salary) throws InputException, IOException {
+        gymService.getTrainerService().editTrainer(ID, name, lastName, email, password, months, salary);
+    }
+    //DELETE
+    @Override
+    public void deleteTrainer(String ID) throws IOException {
+        gymService.getTrainerService().deleteTrainer(ID);
+    }
+    //SORT
+    @Override
+    public void sortTrainer(FilteredList<Trainer> filteredList, TextField textField) {
+        gymService.getTrainerService().sortTrainer(filteredList, textField);
     }
 
 
