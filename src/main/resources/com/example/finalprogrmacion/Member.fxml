@@ -146,7 +146,7 @@
                         <Insets bottom="10.0" left="20.0" />
                      </VBox.margin>
                   </TextField>
-                  <TableView fx:id="tbMember" prefHeight="488.0" prefWidth="536.0">
+                  <TableView fx:id="tbMember" onMouseClicked="#selectMember" prefHeight="488.0" prefWidth="536.0">
                      <columns>
                         <TableColumn fx:id="colID" prefWidth="63.0" text="ID" />
                         <TableColumn fx:id="colName" prefWidth="169.0" text="Nombre" />

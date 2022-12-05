@@ -110,6 +110,7 @@ public class MemberController implements Initializable {
         mfc.switchToSessionScene(e);
     }
 
+    @FXML
     public void selectMember(MouseEvent mouseEvent){
         Member member = tbMember.getSelectionModel().getSelectedItem();
         txtID.setText(member.getID());
@@ -150,8 +151,9 @@ public class MemberController implements Initializable {
 
     //Edit
     @FXML
-    void btnEdit(ActionEvent event){
-
+    void btnEdit(ActionEvent event) throws InputException, IOException {
+        mfc.editMember(txtID.getText(), txtName.getText(), txtLastName.getText(), txtEmail.getText(),
+                txtPassword.getText(),txtWeight.getText(), txtHeight.getText(), txtAge.getText());
     }
 
     //Search

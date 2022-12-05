@@ -93,9 +93,9 @@ public class MemberServiceImpl implements MemberService {
 
     //Sort
     @Override
-    public void sortByName(FilteredList<Member> filteredlist, TextField textField){
+    public void sortByName(FilteredList<Member> filteredList, TextField textField){
         textField.textProperty().addListener((prop, old, text)->{
-            filteredlist.setPredicate(element ->{
+            filteredList.setPredicate(element ->{
                 if (text == null || text.isEmpty()) return true;
                 String name = element.getName().toLowerCase();
                 return name.contains(text.toLowerCase());

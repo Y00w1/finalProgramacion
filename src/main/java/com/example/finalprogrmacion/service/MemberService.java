@@ -20,7 +20,7 @@ public interface MemberService {
     Stream<Member> searchByName(String name);
     void sortByFidelity();
     void browseHashMap();
-    void editMember(String ID, String name, String lastName, String email, String password, String weight, String height, String age)throws IOException, InputException;
-    void sortByName(FilteredList<Member> filteredlist, TextField textField);
+    void editMember(String ID, String name, String lastName, String email, String password, String weight, String height, String age) throws IOException, InputException;
+    void sortByName(FilteredList<Member> filteredList, TextField textField);
 
 }
