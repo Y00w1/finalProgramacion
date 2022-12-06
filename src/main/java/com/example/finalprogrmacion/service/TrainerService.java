@@ -8,8 +8,10 @@ import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public interface TrainerService {
+    HashMap<String, Trainer> getTrainers();
     void loadTrainers();
     ObservableList<Trainer> fillObLiTrainers();
     void createTrainer(String ID, String name, String lastName, String email, String password, String months, String salary)throws InputException, IOException;

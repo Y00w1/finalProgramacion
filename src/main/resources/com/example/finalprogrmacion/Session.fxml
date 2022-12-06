@@ -24,22 +24,22 @@
                         <Insets left="70.0" right="5.0" top="30.0" />
                      </HBox.margin>
                   </Label>
-                  <Button mnemonicParsing="false" text="Ejercico">
+                  <Button mnemonicParsing="false" onAction="#switchToExercise" text="Ejercico">
                      <HBox.margin>
                         <Insets left="15.0" right="5.0" top="27.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Miembros">
+                  <Button mnemonicParsing="false" onAction="#switchToMember" text="Miembros">
                      <HBox.margin>
                         <Insets left="15.0" right="5.0" top="27.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Sesiones">
+                  <Button disable="true" mnemonicParsing="false" text="Sesiones">
                      <HBox.margin>
                         <Insets left="15.0" right="5.0" top="27.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Entrenadores">
+                  <Button mnemonicParsing="false" onAction="#switchToTrainer" text="Entrenadores">
                      <HBox.margin>
                         <Insets left="15.0" right="5.0" top="27.0" />
                      </HBox.margin>
@@ -50,29 +50,29 @@
          <center>
             <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField promptText="Nombre de Sesion">
+                  <TextField fx:id="txtName" promptText="Nombre de Sesion">
                      <VBox.margin>
-                        <Insets bottom="10.0" left="30.0" right="70.0" top="150.0" />
+                        <Insets bottom="10.0" left="30.0" right="70.0" top="40.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField promptText="Entrenador">
+                  <TextField fx:id="txtTrainer" promptText="Entrenador">
                      <VBox.margin>
                         <Insets bottom="10.0" left="30.0" right="70.0" />
                      </VBox.margin>
                   </TextField>
                   <HBox prefHeight="30.0" prefWidth="200.0">
                      <children>
-                        <TextField prefHeight="25.0" prefWidth="358.0" promptText="Ejercicios">
+                        <TextField fx:id="txtExercise" prefHeight="25.0" prefWidth="358.0" promptText="Ejercicios">
                            <HBox.margin>
                               <Insets left="30.0" right="5.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" text="+">
+                        <Button mnemonicParsing="false" onAction="#addExercise" text="+">
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="-">
+                        <Button mnemonicParsing="false" onAction="#removeExercise" prefHeight="25.0" prefWidth="25.0" text="-">
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>
@@ -84,46 +84,46 @@
                   </HBox>
                   <HBox prefHeight="30.0" prefWidth="200.0">
                      <children>
-                        <TextField prefWidth="358.0" promptText="Miembros">
+                        <TextField fx:id="txtMember" prefWidth="358.0" promptText="Miembros">
                            <HBox.margin>
                               <Insets left="30.0" right="5.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" text="+">
+                        <Button mnemonicParsing="false" onAction="#addMember" text="+">
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="-">
+                        <Button mnemonicParsing="false" onAction="#removeMember" prefHeight="25.0" prefWidth="25.0" text="-">
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>
                         </Button>
                      </children>
                   </HBox>
-                  <DatePicker prefHeight="25.0" prefWidth="430.0" promptText="Fecha">
+                  <DatePicker fx:id="inpDate" prefHeight="25.0" prefWidth="430.0" promptText="Fecha">
                      <VBox.margin>
                         <Insets bottom="10.0" left="30.0" top="10.0" />
                      </VBox.margin>
                   </DatePicker>
-                  <ComboBox prefWidth="430.0" promptText="Horarios">
+                  <ComboBox fx:id="cbTime" prefWidth="430.0" promptText="Horarios">
                      <VBox.margin>
                         <Insets bottom="10.0" left="30.0" top="5.0" />
                      </VBox.margin>
                   </ComboBox>
                   <HBox prefHeight="49.0" prefWidth="532.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Button">
+                        <Button mnemonicParsing="false" onAction="#createSession" text="Crear">
                            <HBox.margin>
                               <Insets left="170.0" right="5.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Button">
+                        <Button mnemonicParsing="false" onAction="#editSession" text="Editar">
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Button">
+                        <Button mnemonicParsing="false" onAction="#deleteSession" text="Eliminar">
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>
@@ -133,17 +133,52 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </HBox>
+                  <HBox prefHeight="225.0" prefWidth="532.0">
+                     <children>
+                        <TableView fx:id="tbExercise" onMouseClicked="#selectTbExercise" prefHeight="200.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn fx:id="colIDExercise" prefWidth="46.0" text="ID" />
+                            <TableColumn fx:id="colNameExercise" prefWidth="153.0" text="Ejercicio" />
+                          </columns>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="50.0" right="10.0" />
+                           </HBox.margin>
+                        </TableView>
+                        <TableView fx:id="tbMember" onMouseClicked="#selectTbMember" prefHeight="200.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn fx:id="colIDMember" prefWidth="52.0" text="ID" />
+                            <TableColumn fx:id="colNameMember" prefWidth="147.0" text="Miembro" />
+                          </columns>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" />
+                           </HBox.margin>
+                        </TableView>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </center>
          <left>
             <VBox prefHeight="543.0" prefWidth="498.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView prefHeight="554.0" prefWidth="498.0">
+                  <TextField fx:id="txtFilterName" onAction="#sortByName" promptText="Filtrar por nombre">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TableView fx:id="tbSession" onMouseClicked="#selectTbSession" prefHeight="554.0" prefWidth="498.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
+                      <TableColumn fx:id="colName" prefWidth="75.0" text="Nombre" />
+                      <TableColumn fx:id="colTrainer" prefWidth="232.0" text="Entrenador" />
+                        <TableColumn fx:id="colDate" prefWidth="37.0" text="Fecha" />
+                        <TableColumn fx:id="colTime" prefWidth="75.0" text="Horario" />
                     </columns>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" />
+                     </VBox.margin>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
                   </TableView>
                </children>
             </VBox>

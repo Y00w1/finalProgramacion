@@ -2,19 +2,26 @@ package com.example.finalprogrmacion.controller;
 
 import com.example.finalprogrmacion.model.Exercise;
 import com.example.finalprogrmacion.model.Member;
+import com.example.finalprogrmacion.model.Session;
 import com.example.finalprogrmacion.model.Trainer;
 import com.example.finalprogrmacion.service.ModelFactoryControllerService;
 import com.example.finalprogrmacion.service.impl.GymServiceImpl;
 import com.example.finalprogrmacion.validator.InputException;
+import com.example.finalprogrmacion.validator.notFoundExc;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class ModelFactoryController implements ModelFactoryControllerService {
     GymServiceImpl gymService;
+    public GymServiceImpl getGymService() {
+        return gymService;
+    }
+
     private static class SingletonHolder{
         private final static ModelFactoryController eINSTANCE = new ModelFactoryController();
     }
@@ -152,5 +159,63 @@ public class ModelFactoryController implements ModelFactoryControllerService {
         gymService.getTrainerService().sortTrainer(filteredList, textField);
     }
 
+
+    //SESSION
+    //Persistence
+    public void loadSessions(){
+        gymService.getSessionService().loadSessions();
+    }
+
+    //Lists for the tables
+    //Sessions
+    public ObservableList<Session> fillObSessions(){
+        return gymService.getSessionService().fillObLiSessions();
+    }
+    //Exercises
+    public ObservableList<Exercise> fillObExercises(){
+        return gymService.getExerciseService().fillObLiExercises();
+    }
+    //Members
+    public ObservableList<Member> fillObMembers(){
+        return gymService.getSessionService().fillObLiMembers();
+    }
+
+    //Functions to fill and remove the exercises and members arrays
+    //EXERCISES
+    public void addExercise(String IDExercise) throws InputException, notFoundExc{
+        gymService.getSessionService().addExercise(IDExercise);
+    }
+    public void removeExercise(String IDExercise) throws InputException, notFoundExc{
+        gymService.getSessionService().removeExercise(IDExercise);
+    }
+
+    //MEMBERS
+    public void addMember(String IDMember) throws InputException, notFoundExc{
+        gymService.getSessionService().addMember(IDMember);
+    }
+    public void removeMember(String IDMember) throws InputException, notFoundExc{
+        gymService.getSessionService().removeMember(IDMember);
+    }
+    //FILL EXERCISE AND MEMBER
+    public void fillSubLists(Session session){
+        gymService.getSessionService().fillSubLists(session);
+    }
+
+    //CRUD Session
+    public void createSession(String name, String trainerID, LocalDate date, String time) throws InputException, IOException, notFoundExc{
+        gymService.getSessionService().createSession(name, trainerID, date, time);
+    }
+    //
+    public void editSession(Integer id, String name, String trainerID, LocalDate date, String time) throws InputException, IOException, notFoundExc{
+        gymService.getSessionService().editSession(id, name, trainerID, date, time);
+    }
+    //
+    public void deleteSession(Integer ID) throws InputException{
+        gymService.getSessionService().deleteSession(ID);
+    }
+    //
+    public void sortSessions(FilteredList<Session> filteredList, TextField textField){
+        gymService.getSessionService().sortSessions(filteredList, textField);
+    }
 
 }

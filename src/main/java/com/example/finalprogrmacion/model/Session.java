@@ -3,15 +3,20 @@ package com.example.finalprogrmacion.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.HashMap;
 import java.util.List;
 
 public class Session {
+    private Integer ID;
     private String name;
     private Trainer trainer;
-    private List<Exercise> exercises;
-    private List<Member> members;
+    private HashMap<String, Exercise> exercises;
+    private HashMap<String, Member> members;
     private LocalDate day;
     private LocalTime time;
+    public Integer getID() {
+        return ID;
+    }
 
     public String getName() {
         return name;
@@ -27,19 +32,19 @@ public class Session {
         this.trainer = trainer;
     }
 
-    public List<Exercise> getExercises() {
+    public HashMap<String, Exercise> getExercises() {
         return exercises;
     }
 
-    public void setExercises(List<Exercise> exercises) {
+    public void setExercises(HashMap<String, Exercise> exercises) {
         this.exercises = exercises;
     }
 
-    public List<Member> getMembers() {
+    public HashMap<String, Member> getMembers() {
         return members;
     }
 
-    public void setMembers(List<Member> members) {
+    public void setMembers(HashMap<String, Member> members) {
         this.members = members;
     }
     public LocalDate getDay() {
@@ -55,7 +60,8 @@ public class Session {
         this.time = time;
     }
 
-    public Session(String name, Trainer trainer, List<Exercise> exercises, List<Member> members, LocalDate day, LocalTime time) {
+    public Session(Integer ID, String name, Trainer trainer, HashMap<String, Exercise> exercises, HashMap<String, Member> members, LocalDate day, LocalTime time) {
+        this.ID = ID;
         this.name = name;
         this.trainer = trainer;
         this.exercises = exercises;

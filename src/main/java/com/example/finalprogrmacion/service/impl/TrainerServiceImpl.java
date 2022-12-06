@@ -22,6 +22,10 @@ public class TrainerServiceImpl implements TrainerService {
     private final InputsVal inpVal = new InputsVal();
     HashMap<String, Trainer> trainers = new HashMap<>();
 
+    public HashMap<String, Trainer> getTrainers() {
+        return trainers;
+    }
+
     //Persistence
     @Override
     public void loadTrainers() {

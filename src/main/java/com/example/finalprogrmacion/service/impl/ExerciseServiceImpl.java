@@ -20,7 +20,12 @@ import java.util.Map;
 public class ExerciseServiceImpl implements ExerciseService {
     private final InputsVal inpVal = new InputsVal();
     HashMap<String, Exercise> exercises = new HashMap<>();
-//Persistence
+
+    public HashMap<String, Exercise> getExercises() {
+        return exercises;
+    }
+
+    //Persistence
     @Override
     public void loadExercises() {
         try{

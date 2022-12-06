@@ -24,6 +24,9 @@ public class MemberServiceImpl implements MemberService {
     private final InputsVal inpVal = new InputsVal();//Class to make validations
     List<Member> membersArList = new ArrayList<>();
     HashMap<String, Member> membersHashMap = new HashMap<>();
+    public HashMap<String, Member> getMembersHashMap() {
+        return membersHashMap;
+    }
 
     //Load the members from persistence
     @Override

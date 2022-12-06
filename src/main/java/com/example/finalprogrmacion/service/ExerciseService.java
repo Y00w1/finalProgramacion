@@ -8,8 +8,10 @@ import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public interface ExerciseService {
+    public HashMap<String, Exercise> getExercises();
     void loadExercises();
     ObservableList<Exercise> fillObLiExercises();
     void createExercise(String id, String name, String calories, String duration)throws IOException, InputException;

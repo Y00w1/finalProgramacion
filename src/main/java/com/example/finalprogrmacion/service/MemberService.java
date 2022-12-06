@@ -8,11 +8,13 @@ import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Stream;
 
 public interface MemberService {
     void loadMembers();
+    HashMap<String, Member> getMembersHashMap();
     ObservableList<Member> fillObLiMembers();
     void addMember(String ID, String name, String lastName, String email, String password, String weight, String height, String age) throws IOException, InputException;
     void deleteMember(String ID) throws IOException;

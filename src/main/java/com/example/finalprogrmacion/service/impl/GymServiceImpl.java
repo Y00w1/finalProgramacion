@@ -9,6 +9,7 @@ public class GymServiceImpl {
     private final SceneService sceneService;
     private final LoginService loginService;
     private final TrainerService trainerService;
+    private final SessionService sessionService;
 
 
     public GymServiceImpl(){
@@ -17,6 +18,7 @@ public class GymServiceImpl {
         this.sceneService = new SceneController();
         this.loginService = new LoginServiceImpl();
         this.trainerService = new TrainerServiceImpl();
+        this.sessionService = new SessionServiceImpl();
     }
 
     public MemberService getMemberService(){
@@ -31,5 +33,8 @@ public class GymServiceImpl {
     public LoginService getLoginService() {return loginService;}
     public TrainerService getTrainerService() {
         return trainerService;
+    }
+    public SessionService getSessionService() {
+        return sessionService;
     }
 }

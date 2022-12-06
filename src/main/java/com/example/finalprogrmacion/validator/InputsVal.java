@@ -4,6 +4,7 @@ import com.example.finalprogrmacion.model.Exercise;
 import com.example.finalprogrmacion.model.Member;
 import com.example.finalprogrmacion.model.Trainer;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -43,6 +44,18 @@ public class InputsVal {
     }
 
     //Empty inputs & Password validation
+    public void txtEmpty(String str) throws InputException{
+        if(str.isEmpty()){
+            throw new InputException("El campo no puede estar vacio");
+        }
+    }
+    //Session
+    public void emptySession(String name, String trainerID, LocalDate date, String time)throws InputException{
+        if(name.isEmpty() || trainerID.isEmpty() || date == null || time.isEmpty() ){
+            throw new InputException("No pueden quedar campos vacios");
+        }
+    }
+
     //member
     public void emptyMember(String ID, String name, String lastName, String email, String password, String weight, String height, String age) throws InputException{
         if(ID.isEmpty() || name.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || weight.isEmpty() || height.isEmpty() || age.isEmpty()){
