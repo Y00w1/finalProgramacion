@@ -27,7 +27,7 @@ public interface SessionService {
     //Members
     ObservableList<Member> fillObLiMembers();
     //Fill both sublist
-    void fillSubLists(Session session);
+    void fillSubLists(Session session, ObservableList<Exercise> exercises, ObservableList<Member> members);
 
     HashMap<String, Exercise> getExercisesSession();
     HashMap<String, Member> getMembersSession();
@@ -39,8 +39,8 @@ public interface SessionService {
     void removeMember(String IDMember) throws InputException, notFoundExc;
 
     //CRUD Session
-    void createSession(String name, String trainerID, LocalDate date, String time) throws InputException, IOException, notFoundExc;
-    void editSession(Integer id, String name, String trainerID, LocalDate date, String time) throws InputException, IOException, notFoundExc;
+    Session createSession(String name, String trainerID, LocalDate date, String timeStart, String timeEnd) throws InputException, IOException, notFoundExc;
+    void editSession(Integer id, String name, String trainerID, LocalDate date, String timeStart, String timeEnd) throws InputException, IOException, notFoundExc;
     void deleteSession(Integer ID) throws InputException;
     void sortSessions(FilteredList<Session> filteredList, TextField textField);
 }

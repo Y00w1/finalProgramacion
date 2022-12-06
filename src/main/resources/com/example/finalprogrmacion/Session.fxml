@@ -106,11 +106,20 @@
                         <Insets bottom="10.0" left="30.0" top="10.0" />
                      </VBox.margin>
                   </DatePicker>
-                  <ComboBox fx:id="cbTime" prefWidth="430.0" promptText="Horarios">
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="30.0" top="5.0" />
-                     </VBox.margin>
-                  </ComboBox>
+                  <HBox prefHeight="38.0" prefWidth="532.0">
+                     <children>
+                        <ComboBox fx:id="cbTimeStart" prefHeight="25.0" prefWidth="210.0" promptText="Hora Inicio">
+                           <HBox.margin>
+                              <Insets left="30.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ComboBox>
+                        <ComboBox fx:id="cbTimeEnd" prefHeight="25.0" prefWidth="210.0" promptText="Hora Final">
+                           <HBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </HBox.margin>
+                        </ComboBox>
+                     </children>
+                  </HBox>
                   <HBox prefHeight="49.0" prefWidth="532.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#createSession" text="Crear">

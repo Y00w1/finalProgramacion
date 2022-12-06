@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="18.0.2" class="java.beans.XMLDecoder">
+    <Object class="com/example/finalprogrmacion/model/SessionPer">
+        <void property="sessions">
+            <Object class="java.util.HashMap">
 
+            </Object>
+        </void>
+    </Object>
 </java>
 
 <!--

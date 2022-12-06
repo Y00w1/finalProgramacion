@@ -118,7 +118,7 @@ public class MemberController implements Initializable {
         txtLastName.setText(member.getLastName());
         txtEmail.setText(member.getEmail());
         txtWeight.setText(member.getWeight()+"");
-        txtWeight.setText(member.getHeight()+"");
+        txtHeight.setText(member.getHeight()+"");
         txtAge.setText(member.getAge()+"");
     }
 

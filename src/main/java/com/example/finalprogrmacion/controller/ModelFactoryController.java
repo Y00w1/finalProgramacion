@@ -173,7 +173,7 @@ public class ModelFactoryController implements ModelFactoryControllerService {
     }
     //Exercises
     public ObservableList<Exercise> fillObExercises(){
-        return gymService.getExerciseService().fillObLiExercises();
+        return gymService.getSessionService().fillObLiExercises();
     }
     //Members
     public ObservableList<Member> fillObMembers(){
@@ -197,17 +197,17 @@ public class ModelFactoryController implements ModelFactoryControllerService {
         gymService.getSessionService().removeMember(IDMember);
     }
     //FILL EXERCISE AND MEMBER
-    public void fillSubLists(Session session){
-        gymService.getSessionService().fillSubLists(session);
+    public void fillSubLists(Session session, ObservableList<Exercise> exercises, ObservableList<Member> members){
+        gymService.getSessionService().fillSubLists(session, exercises, members);
     }
 
     //CRUD Session
-    public void createSession(String name, String trainerID, LocalDate date, String time) throws InputException, IOException, notFoundExc{
-        gymService.getSessionService().createSession(name, trainerID, date, time);
+    public Session createSession(String name, String trainerID, LocalDate date, String timeStart, String timeEnd) throws InputException, IOException, notFoundExc{
+        return gymService.getSessionService().createSession(name, trainerID, date, timeStart, timeEnd);
     }
     //
-    public void editSession(Integer id, String name, String trainerID, LocalDate date, String time) throws InputException, IOException, notFoundExc{
-        gymService.getSessionService().editSession(id, name, trainerID, date, time);
+    public void editSession(Integer id, String name, String trainerID, LocalDate date, String timeStart, String timeEnd) throws InputException, IOException, notFoundExc{
+        gymService.getSessionService().editSession(id, name, trainerID, date, timeStart, timeEnd);
     }
     //
     public void deleteSession(Integer ID) throws InputException{

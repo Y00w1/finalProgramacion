@@ -13,7 +13,7 @@ public class Session {
     private HashMap<String, Exercise> exercises;
     private HashMap<String, Member> members;
     private LocalDate day;
-    private LocalTime time;
+    private String time;
     public Integer getID() {
         return ID;
     }
@@ -53,14 +53,14 @@ public class Session {
     public void setDay(LocalDate day) {
         this.day = day;
     }
-    public LocalTime getTime() {
+    public String getTime() {
         return time;
     }
-    public void setTime(LocalTime time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
-    public Session(Integer ID, String name, Trainer trainer, HashMap<String, Exercise> exercises, HashMap<String, Member> members, LocalDate day, LocalTime time) {
+    public Session(Integer ID, String name, Trainer trainer, HashMap<String, Exercise> exercises, HashMap<String, Member> members, LocalDate day, String time) {
         this.ID = ID;
         this.name = name;
         this.trainer = trainer;

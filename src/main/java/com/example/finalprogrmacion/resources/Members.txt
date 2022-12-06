@@ -1,1 +1,1 @@
-1,David,Gomez,ejemplo@,1234,65,180,17
+1,david,gomez,email@,1234

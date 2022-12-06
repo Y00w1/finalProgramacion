@@ -1,9 +1,7 @@
 package com.example.finalprogrmacion.service.impl;
 
-import com.example.finalprogrmacion.model.Exercise;
-import com.example.finalprogrmacion.model.Member;
-import com.example.finalprogrmacion.model.Session;
-import com.example.finalprogrmacion.model.Trainer;
+import com.example.finalprogrmacion.model.*;
+import com.example.finalprogrmacion.resources.Persistence;
 import com.example.finalprogrmacion.service.SessionService;
 import com.example.finalprogrmacion.validator.InputException;
 import com.example.finalprogrmacion.validator.InputsVal;
@@ -29,6 +27,9 @@ public class SessionServiceImpl implements SessionService {
     HashMap<String, Exercise> exercisesSession = new HashMap<>();
     HashMap<String, Member> membersSession = new HashMap<>();
 
+    //PERSISTENCE
+    //SessionPer sessionsPer = Persistence.loadSessionsXMLResource();
+
     //Getter for validations
     @Override
     public HashMap<String, Exercise> getExercisesSession() {
@@ -42,7 +43,10 @@ public class SessionServiceImpl implements SessionService {
     //Persistence
     @Override
     public void loadSessions() {
-
+        /*SessionPer sessionsPer = Persistence.loadSessionsXMLResource();
+        for(Session session : sessionsPer.getSessions().values()){
+            sessions.put(session.getID(), session);
+        }*/
     }
     //List for the tables
     //Sessions
@@ -100,16 +104,20 @@ public class SessionServiceImpl implements SessionService {
     }
     //FILL EXERCISE AND MEMBER
     @Override
-    public void fillSubLists(Session session){
+    public void fillSubLists(Session session, ObservableList<Exercise> exercises, ObservableList<Member> members){
         membersSession = session.getMembers();
+        members.addAll(membersSession.values());
         exercisesSession = session.getExercises();
+        exercises.addAll(exercisesSession.values());
     }
 
     //CRUD Session
     @Override
-    public void createSession(String name, String trainerID, LocalDate date, String time) throws InputException, IOException, notFoundExc {
-        inpVal.emptySession(name, trainerID, date, time);
+    public Session createSession(String name, String trainerID, LocalDate date, String timeStart, String timeEnd) throws InputException, IOException, notFoundExc {
+        inpVal.emptySession(name, trainerID, date, timeStart, timeEnd);
         Trainer trainer = classVal.valIDTrainer(trainerID);
+        String time = inpVal.validTime(timeStart, timeEnd);
+        inpVal.uniqueTime(time, date, sessions);
 
         Integer ID;
         if(!sessions.isEmpty()){
@@ -124,16 +132,23 @@ public class SessionServiceImpl implements SessionService {
             ID = 0;
         }
         ID++;
-        sessions.put(ID, new Session(ID, name, trainer, exercisesSession, membersSession, date, LocalTime.parse(time)));
+        Session session = new Session(ID, name, trainer, exercisesSession, membersSession, date, time);
+        sessions.put(ID, session);
         exercisesSession.clear();
         membersSession.clear();
+        /*sessionsPer.getSessions().put(ID, session);
+        Persistence.saveSessionsXMLResource(sessionsPer);*/
+        return session;
     }
 
     @Override
-    public void editSession(Integer id, String name, String trainerID, LocalDate date, String time) throws InputException, IOException, notFoundExc {
-        inpVal.emptySession(name, trainerID, date, time);
+    public void editSession(Integer id, String name, String trainerID, LocalDate date, String timeStart, String timeEnd) throws InputException, IOException, notFoundExc {
+        inpVal.emptySession(name, trainerID, date, timeStart, timeEnd);
+        String time = inpVal.validTime(timeStart, timeEnd);
+        inpVal.uniqueTime(time, date, sessions);
         Trainer trainer = classVal.valIDTrainer(trainerID);
-        sessions.replace(id, new Session(id, name, trainer, exercisesSession, membersSession, date, LocalTime.parse(time)));
+
+        sessions.replace(id, new Session(id, name, trainer, exercisesSession, membersSession, date, time));
         exercisesSession.clear();
         membersSession.clear();
     }

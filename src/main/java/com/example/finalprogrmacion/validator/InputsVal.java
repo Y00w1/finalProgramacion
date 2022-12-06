@@ -2,6 +2,7 @@ package com.example.finalprogrmacion.validator;
 
 import com.example.finalprogrmacion.model.Exercise;
 import com.example.finalprogrmacion.model.Member;
+import com.example.finalprogrmacion.model.Session;
 import com.example.finalprogrmacion.model.Trainer;
 
 import java.time.LocalDate;
@@ -50,9 +51,25 @@ public class InputsVal {
         }
     }
     //Session
-    public void emptySession(String name, String trainerID, LocalDate date, String time)throws InputException{
-        if(name.isEmpty() || trainerID.isEmpty() || date == null || time.isEmpty() ){
+    public void emptySession(String name, String trainerID, LocalDate date, String timeStart, String timeEnd)throws InputException{
+        if(name.isEmpty() || trainerID.isEmpty() || date == null || timeStart.isEmpty() || timeEnd.isEmpty() ){
             throw new InputException("No pueden quedar campos vacios");
+        }
+    }
+    //TIME
+    public String validTime(String timeStart, String timeEnd) throws InputException {
+        if( (Double.parseDouble(timeEnd) - Double.parseDouble(timeStart))<0 ){
+            throw new InputException("El tiempo es inválido");
+        }else{
+            return timeStart+" - "+timeEnd;
+        }
+    }
+    //Not repeat time
+    public void uniqueTime(String time, LocalDate date, HashMap<Integer, Session> sessions) throws InputException{
+        for(Session session : sessions.values()){
+            if( session.getTime().equals(time) && session.getDay().equals(date) ){
+                throw new InputException("La fecha no se puede repetir");
+            }
         }
     }
 

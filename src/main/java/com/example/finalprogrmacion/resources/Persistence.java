@@ -10,11 +10,11 @@ import java.util.HashMap;
 
 public class Persistence {
     //paths to the persistence docs
-    public static final String FILE_PATH_ADMIN = "./Admins.txt";
-    public static final String FILE_PATH_MEMBERS = "./Members.txt";
-    public static final String FILE_PATH_EXERCISES = "./Exercises.txt";
-    public static final String FILE_PATH_SESSIONS = "./Sessions.xml";
-    public static final String FILE_PATH_TRAINERS = "./Trainers.txt";
+    public static final String FILE_PATH_ADMIN = "src/main/java/com/example/finalprogrmacion/resources/Admins.txt";
+    public static final String FILE_PATH_MEMBERS = "src/main/java/com/example/finalprogrmacion/resources/Members.txt";
+    public static final String FILE_PATH_EXERCISES = "src/main/java/com/example/finalprogrmacion/resources/Exercises.txt";
+    public static final String FILE_PATH_SESSIONS = "src/main/java/com/example/finalprogrmacion/resources/Sessions.xml";
+    public static final String FILE_PATH_TRAINERS = "src/main/java/com/example/finalprogrmacion/resources/Trainers.txt";
 
     /*Saving admins in the doc .txt
     public static void saveAdmins(HashMap<String, Admin> adminList) throws IOException{
@@ -34,7 +34,7 @@ public class Persistence {
         ArrayList<String> content = UtilDoc.readDoc(FILE_PATH_ADMIN);
         String line = "";
 
-        for (int i=0; i<content.size()-1;i++){
+        for (int i=0; i<content.size();i++){
             Admin myAdmin = new Admin();
             line = content.get(i);
 
@@ -67,7 +67,7 @@ public class Persistence {
         ArrayList<String> content = UtilDoc.readDoc(FILE_PATH_MEMBERS);
         String line = "";
 
-        for (int i=0; i<content.size()-1;i++){
+        for (int i=0; i<content.size();i++){
             Member myMember = new Member();
             line = content.get(i);
 
@@ -98,7 +98,7 @@ public class Persistence {
         ArrayList<String> content = UtilDoc.readDoc(FILE_PATH_EXERCISES);
         String line = "";
 
-        for (int i = 0; i < content.size()-1; i++){
+        for (int i = 0; i < content.size(); i++){
             Exercise myExercise = new Exercise();
             line = content.get(i);
 
@@ -129,7 +129,7 @@ public class Persistence {
         ArrayList<String> content = UtilDoc.readDoc(FILE_PATH_TRAINERS);
         String line = "";
 
-        for (int i = 0; i < content.size()-1; i++){
+        for (int i = 0; i < content.size(); i++){
             Trainer myTrainer = new Trainer();
             line = content.get(i);
 
@@ -147,7 +147,7 @@ public class Persistence {
     }
 
     //Saving Session in the doc .xml
-/*    public static void saveSessionsXMLResource(Session session){
+    public static void saveSessionsXMLResource(SessionPer session){
         try{
             UtilDoc.saveXMLSerializedResource(FILE_PATH_SESSIONS, session);
         }catch(Exception e){
@@ -155,17 +155,15 @@ public class Persistence {
         }
     }
     //Loading the Sessions from the doc .xml
-    public static Session loadRe
-
-    public static Tienda cargarRecursoTiendaXML() {
-        Tienda tienda = null;
-        try {
-            tienda = (Tienda) ArchivoUtil.cargarRecursoSerializadoXML(RUTA_ARCHIVO_TIENDA);
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
+    public static SessionPer loadSessionsXMLResource(){
+        SessionPer session = null;
+        try{
+            session = (SessionPer) UtilDoc.loadXMLSerializedResource(FILE_PATH_SESSIONS);
+        }catch(Exception e){
+            System.out.println(""+e);
             e.printStackTrace();
         }
-        return tienda;
-    }*/
+        return session;
+    }
 
 }
