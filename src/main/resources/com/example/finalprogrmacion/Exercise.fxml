@@ -10,17 +10,21 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="620.0" maxWidth="1030.0" minHeight="620.0" minWidth="1030.0" prefHeight="620.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalprogrmacion.controller.ExerciseController">
    <children>
       <BorderPane prefHeight="620.0" prefWidth="1030.0">
          <top>
-            <HBox prefHeight="77.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <HBox prefHeight="77.0" prefWidth="200.0" style="-fx-background-color: #50577A;" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="GIMNASIO LOS VIGAS">
+                  <Label text="GIMNASIO LOS VIGAS" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="70.0" right="5.0" top="30.0" />
-                     </HBox.margin></Label>
+                     </HBox.margin>
+                     <font>
+                        <Font name="Impact" size="18.0" />
+                     </font></Label>
                   <Button disable="true" mnemonicParsing="false" text="Ejercico">
                      <HBox.margin>
                         <Insets left="15.0" right="5.0" top="27.0" />
@@ -40,7 +44,7 @@
                </children></HBox>
          </top>
          <center>
-            <VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="511.0" BorderPane.alignment="TOP_RIGHT">
+            <VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="511.0" style="-fx-background-color: #404258;" BorderPane.alignment="TOP_RIGHT">
                <children>
                   <TextField fx:id="txtID" promptText="ID">
                      <VBox.margin>
@@ -96,7 +100,7 @@
                </children></VBox>
          </center>
          <left>
-            <VBox prefHeight="543.0" prefWidth="517.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="543.0" prefWidth="524.0" style="-fx-background-color: #474E68;" BorderPane.alignment="CENTER">
                <children>
                   <TextField fx:id="txtFilerName" onAction="#filterName" promptText="Filtrar por Nombre">
                      <VBox.margin>
@@ -106,9 +110,9 @@
                   <TableView fx:id="tbExer" onMouseClicked="#selectedExer" prefHeight="518.0" prefWidth="471.0">
                     <columns>
                       <TableColumn fx:id="colID" prefWidth="50.0" text="ID" />
-                      <TableColumn fx:id="colName" minWidth="0.0" prefWidth="174.0" text="Nombre" />
-                        <TableColumn fx:id="colCalories" prefWidth="133.0" text="Calorías" />
-                        <TableColumn fx:id="colDuration" minWidth="0.0" prefWidth="144.0" text="Duración" />
+                      <TableColumn fx:id="colName" minWidth="0.0" prefWidth="175.0" text="Nombre" />
+                        <TableColumn fx:id="colCalories" prefWidth="132.0" text="Calorías" />
+                        <TableColumn fx:id="colDuration" minWidth="0.0" prefWidth="151.0" text="Duración" />
                     </columns>
                      <VBox.margin>
                         <Insets bottom="15.0" left="15.0" top="10.0" />

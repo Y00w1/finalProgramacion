@@ -12,17 +12,21 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="620.0" maxWidth="1030.0" minHeight="620.0" minWidth="1030.0" prefHeight="620.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalprogrmacion.controller.SessionController">
    <children>
       <BorderPane prefHeight="620.0" prefWidth="1030.0">
          <top>
-            <HBox prefHeight="77.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <HBox prefHeight="77.0" prefWidth="200.0" style="-fx-background-color: #50577A;" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="GIMNASIO LOS VIGAS">
+                  <Label text="GIMNASIO LOS VIGAS" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="70.0" right="5.0" top="30.0" />
                      </HBox.margin>
+                     <font>
+                        <Font name="Impact" size="18.0" />
+                     </font>
                   </Label>
                   <Button mnemonicParsing="false" onAction="#switchToExercise" text="Ejercico">
                      <HBox.margin>
@@ -48,7 +52,7 @@
             </HBox>
          </top>
          <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #404258;" BorderPane.alignment="CENTER">
                <children>
                   <TextField fx:id="txtName" promptText="Nombre de Sesion">
                      <VBox.margin>
@@ -168,7 +172,7 @@
             </VBox>
          </center>
          <left>
-            <VBox prefHeight="543.0" prefWidth="498.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="543.0" prefWidth="498.0" style="-fx-background-color: #474E68;" BorderPane.alignment="CENTER">
                <children>
                   <TextField fx:id="txtFilterName" onAction="#sortByName" promptText="Filtrar por nombre">
                      <VBox.margin>
