@@ -12,8 +12,7 @@ public class ClassVal {
 
     //Exercise
     //General
-    public Exercise valIDExercise(String ID) throws notFoundExc{
-        HashMap<String,Exercise> exercises = mfc.getGymService().getExerciseService().getExercises();
+    public Exercise valIDExercise(String ID, HashMap<String,Exercise> exercises) throws notFoundExc{
         if (exercises.get(ID) == null){
             throw new notFoundExc("El id no coincide");
         }else {
@@ -21,8 +20,7 @@ public class ClassVal {
         }
     }
     //Session
-    public void calIDExerSession(String id)throws notFoundExc{
-        HashMap<String, Exercise> exercises = mfc.getGymService().getSessionService().getExercisesSession();
+    public void valIDExerSession(String id, HashMap<String, Exercise> exercises)throws notFoundExc{
         if(exercises.get(id) == null){
             throw new notFoundExc("El id no coincide");
         }
@@ -30,8 +28,7 @@ public class ClassVal {
 
     //Member
     //General
-    public Member valIDMember(String ID) throws notFoundExc{
-        HashMap<String, Member> members = mfc.getGymService().getMemberService().getMembersHashMap();
+    public Member valIDMember(String ID, HashMap<String, Member> members) throws notFoundExc{
         if(members.get(ID) == null){
             throw new notFoundExc("El id no coincide");
         }else{
@@ -39,16 +36,14 @@ public class ClassVal {
         }
     }
     //Session
-    public void valIDMmembSession(String id) throws notFoundExc{
-        HashMap<String, Member> members = mfc.getGymService().getSessionService().getMembersSession();
+    public void valIDMembSession(String id, HashMap<String, Member> members ) throws notFoundExc{
         if(members.get(id) == null){
             throw new notFoundExc("El id no coincide");
         }
     }
 
     //Trainer
-    public Trainer valIDTrainer(String ID) throws notFoundExc {
-        HashMap<String, Trainer> trainers = mfc.getGymService().getTrainerService().getTrainers();
+    public Trainer valIDTrainer(String ID, HashMap<String, Trainer> trainers ) throws notFoundExc {
         if(trainers.get(ID) == null){
             throw new notFoundExc("El id no coincide");
         }else {

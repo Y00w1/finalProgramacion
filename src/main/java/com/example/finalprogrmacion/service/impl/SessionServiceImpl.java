@@ -1,5 +1,6 @@
 package com.example.finalprogrmacion.service.impl;
 
+import com.example.finalprogrmacion.controller.ModelFactoryController;
 import com.example.finalprogrmacion.model.*;
 import com.example.finalprogrmacion.resources.Persistence;
 import com.example.finalprogrmacion.service.SessionService;
@@ -20,7 +21,7 @@ import java.util.HashMap;
 public class SessionServiceImpl implements SessionService {
     //Validators
     private final InputsVal inpVal = new InputsVal();
-    private final ClassVal classVal = new ClassVal();
+    //private final ClassVal classVal = new ClassVal();
 
     //Lists
     HashMap<Integer, Session> sessions = new HashMap<>();
@@ -75,31 +76,29 @@ public class SessionServiceImpl implements SessionService {
     //Functions to fill and remove the exercises and members arrays
     //EXERCISES
     @Override
-    public void addExercise(String IDExercise) throws InputException, notFoundExc {
+    public void addExercise(String IDExercise, Exercise exerciseVal) throws InputException, notFoundExc {
         inpVal.txtEmpty(IDExercise);
-        Exercise exercise = classVal.valIDExercise(IDExercise);
-        exercisesSession.put(IDExercise, exercise);
+        exercisesSession.put(IDExercise, exerciseVal);
     }
 
     @Override
     public void removeExercise(String IDExercise) throws InputException, notFoundExc {
         inpVal.txtEmpty(IDExercise);
-        classVal.calIDExerSession(IDExercise);
+        //mfc.valIDExerSession(IDExercise);
         exercisesSession.remove(IDExercise);
     }
 
     //MEMBERS
     @Override
-    public void addMember(String IDMember) throws InputException, notFoundExc {
+    public void addMember(String IDMember, Member member) throws InputException, notFoundExc {
         inpVal.txtEmpty(IDMember);
-        Member member = classVal.valIDMember(IDMember);
         membersSession.put(IDMember, member);
     }
 
     @Override
     public void removeMember(String IDMember) throws InputException, notFoundExc {
         inpVal.txtEmpty(IDMember);
-        classVal.valIDMmembSession(IDMember);
+        //mfc.valIDMembSession(IDMember);
         membersSession.remove(IDMember);
     }
     //FILL EXERCISE AND MEMBER
@@ -113,9 +112,8 @@ public class SessionServiceImpl implements SessionService {
 
     //CRUD Session
     @Override
-    public Session createSession(String name, String trainerID, LocalDate date, String timeStart, String timeEnd) throws InputException, IOException, notFoundExc {
+    public Session createSession(String name, String trainerID, LocalDate date, String timeStart, String timeEnd, Trainer trainer) throws InputException, IOException, notFoundExc {
         inpVal.emptySession(name, trainerID, date, timeStart, timeEnd);
-        Trainer trainer = classVal.valIDTrainer(trainerID);
         String time = inpVal.validTime(timeStart, timeEnd);
         inpVal.uniqueTime(time, date, sessions);
 
@@ -142,11 +140,10 @@ public class SessionServiceImpl implements SessionService {
     }
 
     @Override
-    public void editSession(Integer id, String name, String trainerID, LocalDate date, String timeStart, String timeEnd) throws InputException, IOException, notFoundExc {
+    public void editSession(Integer id, String name, String trainerID, LocalDate date, String timeStart, String timeEnd, Trainer trainer) throws InputException, IOException, notFoundExc {
         inpVal.emptySession(name, trainerID, date, timeStart, timeEnd);
         String time = inpVal.validTime(timeStart, timeEnd);
         inpVal.uniqueTime(time, date, sessions);
-        Trainer trainer = classVal.valIDTrainer(trainerID);
 
         sessions.replace(id, new Session(id, name, trainer, exercisesSession, membersSession, date, time));
         exercisesSession.clear();

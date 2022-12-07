@@ -1,1 +1,2 @@
 1,press de banca,135.0,20.0
+2,press militar,135.0,15.0

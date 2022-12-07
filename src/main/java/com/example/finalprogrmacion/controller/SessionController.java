@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 
 public class SessionController implements Initializable {
     ModelFactoryController mfc = ModelFactoryController.getInstance();
-    ClassVal classVal = new ClassVal();
+    //ClassVal classVal = new ClassVal();
     ObservableList<Session> sessionsOb = FXCollections.observableArrayList();
     ObservableList<Member> membersOb = FXCollections.observableArrayList();
     ObservableList<Exercise> exercisesOb = FXCollections.observableArrayList();
@@ -116,14 +116,14 @@ public class SessionController implements Initializable {
     @FXML
     void addExercise(ActionEvent event) throws InputException, notFoundExc {
         mfc.addExercise(txtExercise.getText());
-        Exercise exercise = classVal.valIDExercise(txtExercise.getText());
+        Exercise exercise = mfc.IDExerciseVal(txtExercise.getText());
         exercisesOb.add(exercise);
         tbExercise.setItems(exercisesOb);
     }
     @FXML
     void removeExercise(ActionEvent event) throws InputException, notFoundExc {
         mfc.removeExercise(txtExercise.getText());
-        Exercise exercise = classVal.valIDExercise(txtExercise.getText());
+        Exercise exercise = mfc.IDExerciseVal(txtExercise.getText());
         exercisesOb.remove(exercise);
         tbExercise.setItems(exercisesOb);
     }
@@ -131,14 +131,14 @@ public class SessionController implements Initializable {
     @FXML
     void addMember(ActionEvent event) throws InputException, notFoundExc {
         mfc.addMember(txtMember.getText());
-        Member member = classVal.valIDMember(txtMember.getText());
+        Member member = mfc.valIDMember(txtMember.getText());
         membersOb.add(member);
         tbMember.setItems(membersOb);
     }
     @FXML
     void removeMember(ActionEvent event) throws InputException, notFoundExc {
         mfc.removeMember(txtMember.getText());
-        Member member = classVal.valIDMember(txtMember.getText());
+        Member member = mfc.valIDMember(txtMember.getText());
         membersOb.remove(member);
         tbMember.setItems(membersOb);
     }

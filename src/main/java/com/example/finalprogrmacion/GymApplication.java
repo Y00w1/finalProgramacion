@@ -12,7 +12,7 @@ public class GymApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(GymApplication.class.getResource("Session.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(GymApplication.class.getResource("LogIn.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1030, 620);
             stage.setTitle("Gimnasio los vigas");
             stage.setScene(scene);

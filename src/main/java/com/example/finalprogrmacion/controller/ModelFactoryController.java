@@ -6,6 +6,7 @@ import com.example.finalprogrmacion.model.Session;
 import com.example.finalprogrmacion.model.Trainer;
 import com.example.finalprogrmacion.service.ModelFactoryControllerService;
 import com.example.finalprogrmacion.service.impl.GymServiceImpl;
+import com.example.finalprogrmacion.validator.ClassVal;
 import com.example.finalprogrmacion.validator.InputException;
 import com.example.finalprogrmacion.validator.notFoundExc;
 import javafx.collections.ObservableList;
@@ -33,6 +34,9 @@ public class ModelFactoryController implements ModelFactoryControllerService {
     public ModelFactoryController(){
         gymService = new GymServiceImpl();
     }
+
+    // create class for Validations
+    private final ClassVal classVal = new ClassVal();
 
     //Functions
 
@@ -166,6 +170,26 @@ public class ModelFactoryController implements ModelFactoryControllerService {
         gymService.getSessionService().loadSessions();
     }
 
+    //validations
+    //Exercises
+    public Exercise IDExerciseVal(String IDexercise) throws notFoundExc {
+        return classVal.valIDExercise(IDexercise, gymService.getExerciseService().getExercises());
+    }
+    public void valIDExerSession(String id) throws notFoundExc{
+        classVal.valIDExerSession(id, gymService.getExerciseService().getExercises());
+    }
+    //Members
+    public Member valIDMember(String id) throws notFoundExc {
+        return classVal.valIDMember(id, gymService.getMemberService().getMembersHashMap());
+    }
+    public void valIDMembSession(String id)throws notFoundExc{
+        classVal.valIDMembSession(id, gymService.getMemberService().getMembersHashMap());
+    }
+    //Trainer
+    public Trainer valIDTrainer(String id)throws notFoundExc{
+        return classVal.valIDTrainer(id, gymService.getTrainerService().getTrainers());
+    }
+
     //Lists for the tables
     //Sessions
     public ObservableList<Session> fillObSessions(){
@@ -183,17 +207,21 @@ public class ModelFactoryController implements ModelFactoryControllerService {
     //Functions to fill and remove the exercises and members arrays
     //EXERCISES
     public void addExercise(String IDExercise) throws InputException, notFoundExc{
-        gymService.getSessionService().addExercise(IDExercise);
+        Exercise exerciseVal = classVal.valIDExercise(IDExercise, gymService.getExerciseService().getExercises());
+        gymService.getSessionService().addExercise(IDExercise, exerciseVal);
     }
     public void removeExercise(String IDExercise) throws InputException, notFoundExc{
+        classVal.valIDExerSession(IDExercise, gymService.getExerciseService().getExercises());
         gymService.getSessionService().removeExercise(IDExercise);
     }
 
     //MEMBERS
     public void addMember(String IDMember) throws InputException, notFoundExc{
-        gymService.getSessionService().addMember(IDMember);
+        Member memberVal = classVal.valIDMember(IDMember, gymService.getMemberService().getMembersHashMap());
+        gymService.getSessionService().addMember(IDMember, memberVal);
     }
     public void removeMember(String IDMember) throws InputException, notFoundExc{
+        classVal.valIDMembSession(IDMember, gymService.getMemberService().getMembersHashMap());
         gymService.getSessionService().removeMember(IDMember);
     }
     //FILL EXERCISE AND MEMBER
@@ -203,11 +231,13 @@ public class ModelFactoryController implements ModelFactoryControllerService {
 
     //CRUD Session
     public Session createSession(String name, String trainerID, LocalDate date, String timeStart, String timeEnd) throws InputException, IOException, notFoundExc{
-        return gymService.getSessionService().createSession(name, trainerID, date, timeStart, timeEnd);
+        Trainer trainer = classVal.valIDTrainer(trainerID, gymService.getTrainerService().getTrainers());
+        return gymService.getSessionService().createSession(name, trainerID, date, timeStart, timeEnd, trainer);
     }
     //
     public void editSession(Integer id, String name, String trainerID, LocalDate date, String timeStart, String timeEnd) throws InputException, IOException, notFoundExc{
-        gymService.getSessionService().editSession(id, name, trainerID, date, timeStart, timeEnd);
+        Trainer trainer = classVal.valIDTrainer(trainerID, gymService.getTrainerService().getTrainers());
+        gymService.getSessionService().editSession(id, name, trainerID, date, timeStart, timeEnd, trainer);
     }
     //
     public void deleteSession(Integer ID) throws InputException{
