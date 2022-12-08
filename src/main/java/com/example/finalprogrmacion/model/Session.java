@@ -10,6 +10,7 @@ public class Session {
     private Integer ID;
     private String name;
     private Trainer trainer;
+    private String trainerName;
     private HashMap<String, Exercise> exercises;
     private HashMap<String, Member> members;
     private LocalDate day;
@@ -26,6 +27,12 @@ public class Session {
     }
     public Trainer getTrainer() {
         return trainer;
+    }
+    public String getTrainerName() {
+        return trainerName;
+    }
+    public void setTrainerName(String trainerName) {
+        this.trainerName = trainerName;
     }
 
     public void setTrainer(Trainer trainer) {
@@ -64,6 +71,7 @@ public class Session {
         this.ID = ID;
         this.name = name;
         this.trainer = trainer;
+        this.trainerName = trainer.getName();
         this.exercises = exercises;
         this.members = members;
         this.day = day;

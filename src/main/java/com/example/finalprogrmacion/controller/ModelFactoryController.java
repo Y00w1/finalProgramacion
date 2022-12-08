@@ -1,9 +1,6 @@
 package com.example.finalprogrmacion.controller;
 
-import com.example.finalprogrmacion.model.Exercise;
-import com.example.finalprogrmacion.model.Member;
-import com.example.finalprogrmacion.model.Session;
-import com.example.finalprogrmacion.model.Trainer;
+import com.example.finalprogrmacion.model.*;
 import com.example.finalprogrmacion.service.ModelFactoryControllerService;
 import com.example.finalprogrmacion.service.impl.GymServiceImpl;
 import com.example.finalprogrmacion.validator.ClassVal;
@@ -175,33 +172,16 @@ public class ModelFactoryController implements ModelFactoryControllerService {
     public Exercise IDExerciseVal(String IDexercise) throws notFoundExc {
         return classVal.valIDExercise(IDexercise, gymService.getExerciseService().getExercises());
     }
-    public void valIDExerSession(String id) throws notFoundExc{
-        classVal.valIDExerSession(id, gymService.getExerciseService().getExercises());
-    }
+
     //Members
     public Member valIDMember(String id) throws notFoundExc {
         return classVal.valIDMember(id, gymService.getMemberService().getMembersHashMap());
-    }
-    public void valIDMembSession(String id)throws notFoundExc{
-        classVal.valIDMembSession(id, gymService.getMemberService().getMembersHashMap());
-    }
-    //Trainer
-    public Trainer valIDTrainer(String id)throws notFoundExc{
-        return classVal.valIDTrainer(id, gymService.getTrainerService().getTrainers());
     }
 
     //Lists for the tables
     //Sessions
     public ObservableList<Session> fillObSessions(){
         return gymService.getSessionService().fillObLiSessions();
-    }
-    //Exercises
-    public ObservableList<Exercise> fillObExercises(){
-        return gymService.getSessionService().fillObLiExercises();
-    }
-    //Members
-    public ObservableList<Member> fillObMembers(){
-        return gymService.getSessionService().fillObLiMembers();
     }
 
     //Functions to fill and remove the exercises and members arrays
@@ -238,6 +218,10 @@ public class ModelFactoryController implements ModelFactoryControllerService {
     public void editSession(Integer id, String name, String trainerID, LocalDate date, String timeStart, String timeEnd) throws InputException, IOException, notFoundExc{
         Trainer trainer = classVal.valIDTrainer(trainerID, gymService.getTrainerService().getTrainers());
         gymService.getSessionService().editSession(id, name, trainerID, date, timeStart, timeEnd, trainer);
+    }
+    //load
+    public void setSessionsPer(SessionPer sessionsPer){
+        gymService.getSessionService().setSessionsPer(sessionsPer);
     }
     //
     public void deleteSession(Integer ID) throws InputException{

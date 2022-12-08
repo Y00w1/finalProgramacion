@@ -1,9 +1,6 @@
 package com.example.finalprogrmacion.service;
 
-import com.example.finalprogrmacion.model.Exercise;
-import com.example.finalprogrmacion.model.Member;
-import com.example.finalprogrmacion.model.Session;
-import com.example.finalprogrmacion.model.Trainer;
+import com.example.finalprogrmacion.model.*;
 import com.example.finalprogrmacion.validator.InputException;
 import com.example.finalprogrmacion.validator.notFoundExc;
 import javafx.collections.ObservableList;
@@ -30,6 +27,7 @@ public interface SessionService {
     //Fill both sublist
     void fillSubLists(Session session, ObservableList<Exercise> exercises, ObservableList<Member> members);
 
+    void setSessionsPer(SessionPer sessionsPer);
     HashMap<String, Exercise> getExercisesSession();
     HashMap<String, Member> getMembersSession();
 

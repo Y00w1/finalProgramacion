@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="620.0" maxWidth="1030.0" minHeight="620.0" minWidth="1030.0" prefHeight="620.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalprogrmacion.controller.MemberController">
+<AnchorPane maxHeight="620.0" maxWidth="1030.0" minHeight="620.0" minWidth="1030.0" prefHeight="620.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalprogrmacion.controller.MemberController">
    <children>
       <BorderPane prefHeight="620.0" prefWidth="1040.0">
          <top>
@@ -85,10 +85,13 @@
                               <Insets left="50.0" right="5.0" />
                            </HBox.margin>
                         </TextField>
-                        <Label text="Kg">
+                        <Label text="Kg" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>
+                           <font>
+                              <Font name="Impact" size="15.0" />
+                           </font>
                         </Label>
                      </children>
                      <VBox.margin>
@@ -102,10 +105,13 @@
                               <Insets left="50.0" right="5.0" />
                            </HBox.margin>
                         </TextField>
-                        <Label text="Cm">
+                        <Label text="Cm" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>
+                           <font>
+                              <Font name="Impact" size="15.0" />
+                           </font>
                         </Label>
                      </children>
                      <VBox.margin>

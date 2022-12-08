@@ -29,7 +29,14 @@ public class SessionServiceImpl implements SessionService {
     HashMap<String, Member> membersSession = new HashMap<>();
 
     //PERSISTENCE
-    //SessionPer sessionsPer = Persistence.loadSessionsXMLResource();
+    SessionPer sessionsPer;
+    public SessionPer getSessionsPer() {
+        return sessionsPer;
+    }
+
+    public void setSessionsPer(SessionPer sessionsPer) {
+        this.sessionsPer = sessionsPer;
+    }
 
     //Getter for validations
     @Override
@@ -44,8 +51,7 @@ public class SessionServiceImpl implements SessionService {
     //Persistence
     @Override
     public void loadSessions() {
-        /*SessionPer sessionsPer = Persistence.loadSessionsXMLResource();
-        for(Session session : sessionsPer.getSessions().values()){
+        /*for(Session session : sessionsPer.getSessions().values()){
             sessions.put(session.getID(), session);
         }*/
     }
@@ -84,7 +90,6 @@ public class SessionServiceImpl implements SessionService {
     @Override
     public void removeExercise(String IDExercise) throws InputException, notFoundExc {
         inpVal.txtEmpty(IDExercise);
-        //mfc.valIDExerSession(IDExercise);
         exercisesSession.remove(IDExercise);
     }
 
@@ -98,7 +103,6 @@ public class SessionServiceImpl implements SessionService {
     @Override
     public void removeMember(String IDMember) throws InputException, notFoundExc {
         inpVal.txtEmpty(IDMember);
-        //mfc.valIDMembSession(IDMember);
         membersSession.remove(IDMember);
     }
     //FILL EXERCISE AND MEMBER
@@ -130,22 +134,29 @@ public class SessionServiceImpl implements SessionService {
             ID = 0;
         }
         ID++;
-        Session session = new Session(ID, name, trainer, exercisesSession, membersSession, date, time);
+        HashMap<String, Exercise> auxExercisesSession = exercisesSession;
+        HashMap<String, Member> auxMembersSession = membersSession;
+        Session session = new Session(ID, name, trainer, auxExercisesSession, auxMembersSession, date, time);
+        //System.out.println(auxMembersSession.size() +" - "+ auxExercisesSession.size() );
+        //sessionsPer.getSessions().put(ID,session);
         sessions.put(ID, session);
+        Persistence.saveSessionsXMLResource(sessionsPer);
+        resetSubList();
+        return session;
+    }
+    private void resetSubList(){
         exercisesSession.clear();
         membersSession.clear();
-        /*sessionsPer.getSessions().put(ID, session);
-        Persistence.saveSessionsXMLResource(sessionsPer);*/
-        return session;
     }
 
     @Override
     public void editSession(Integer id, String name, String trainerID, LocalDate date, String timeStart, String timeEnd, Trainer trainer) throws InputException, IOException, notFoundExc {
         inpVal.emptySession(name, trainerID, date, timeStart, timeEnd);
         String time = inpVal.validTime(timeStart, timeEnd);
-        inpVal.uniqueTime(time, date, sessions);
+        //inpVal.uniqueTime(time, date, sessions);
 
         sessions.replace(id, new Session(id, name, trainer, exercisesSession, membersSession, date, time));
+        Persistence.saveSessionsXMLResource(sessionsPer);
         exercisesSession.clear();
         membersSession.clear();
     }
@@ -154,6 +165,7 @@ public class SessionServiceImpl implements SessionService {
     public void deleteSession(Integer ID) throws InputException {
         inpVal.txtEmpty(ID+"");
         sessions.remove(ID);
+        Persistence.saveSessionsXMLResource(sessionsPer);
     }
     @Override
     public void sortSessions(FilteredList<Session> filteredList, TextField textField) {

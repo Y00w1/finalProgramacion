@@ -33,8 +33,8 @@ public class LoginController implements Initializable {
         if(mfc.verifyCredentials(txtUser.getText(), txtPassword.getText())){
             mfc.switchToLandingScene(event);
         }else{
-            lblUser.setText("Invalid data");
-            lblPassword.setText("Invalid data");
+            lblUser.setText("Datos inválidos");
+            lblPassword.setText("Datos inválidos");
         }
     }
 }

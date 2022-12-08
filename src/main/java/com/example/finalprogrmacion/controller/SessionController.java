@@ -3,6 +3,8 @@ package com.example.finalprogrmacion.controller;
 import com.example.finalprogrmacion.model.Exercise;
 import com.example.finalprogrmacion.model.Member;
 import com.example.finalprogrmacion.model.Session;
+import com.example.finalprogrmacion.model.SessionPer;
+import com.example.finalprogrmacion.resources.Persistence;
 import com.example.finalprogrmacion.validator.ClassVal;
 import com.example.finalprogrmacion.validator.InputException;
 import com.example.finalprogrmacion.validator.notFoundExc;
@@ -93,7 +95,7 @@ public class SessionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colTrainer.setCellValueFactory(new PropertyValueFactory<>("trainer"));
+        colTrainer.setCellValueFactory(new PropertyValueFactory<>("trainerName"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("day"));
         colTime.setCellValueFactory(new PropertyValueFactory<>("time"));
 
@@ -102,6 +104,9 @@ public class SessionController implements Initializable {
 
         colIDExercise.setCellValueFactory(new PropertyValueFactory<>("id"));
         colNameExercise.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        SessionPer sessionsPer = Persistence.loadSessionsXMLResource();
+        mfc.setSessionsPer(sessionsPer);
 
         obLiTime.addAll(time);
         cbTimeStart.setItems(obLiTime);
@@ -153,6 +158,10 @@ public class SessionController implements Initializable {
         txtTrainer.setText("");
         txtMember.setText("");
         txtExercise.setText("");
+        exercisesOb.clear();
+        membersOb.clear();
+        tbExercise.setItems(exercisesOb);
+        tbMember.setItems(membersOb);
     }
     @FXML
     void deleteSession(ActionEvent event) throws InputException, notFoundExc, IOException {
@@ -164,11 +173,19 @@ public class SessionController implements Initializable {
         txtTrainer.setText("");
         txtMember.setText("");
         txtExercise.setText("");
+        exercisesOb.clear();
+        membersOb.clear();
+        tbExercise.setItems(exercisesOb);
+        tbMember.setItems(membersOb);
     }
     @FXML
     void editSession(ActionEvent event) throws InputException, notFoundExc, IOException {
         Session session = tbSession.getSelectionModel().getSelectedItem();
         mfc.editSession(session.getID(), txtName.getText(), txtTrainer.getText(), inpDate.getValue(), cbTimeStart.getValue(), cbTimeEnd.getValue());
+        exercisesOb.clear();
+        membersOb.clear();
+        tbExercise.setItems(exercisesOb);
+        tbMember.setItems(membersOb);
     }
     @FXML
     void sortByName(ActionEvent event) {
@@ -195,6 +212,8 @@ public class SessionController implements Initializable {
         Session session = tbSession.getSelectionModel().getSelectedItem();
         txtName.setText(session.getName());
         txtTrainer.setText(session.getTrainer().getID());
+        exercisesOb.clear();
+        membersOb.clear();
         mfc.fillSubLists(session, exercisesOb, membersOb);
         tbExercise.setItems(exercisesOb);
         tbMember.setItems(membersOb);

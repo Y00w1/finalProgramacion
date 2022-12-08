@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="620.0" maxWidth="1030.0" minHeight="620.0" minWidth="1030.0" prefHeight="620.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalprogrmacion.controller.ExerciseController">
+<AnchorPane maxHeight="620.0" maxWidth="1030.0" minHeight="620.0" minWidth="1030.0" prefHeight="620.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalprogrmacion.controller.ExerciseController">
    <children>
       <BorderPane prefHeight="620.0" prefWidth="1030.0">
          <top>
@@ -68,10 +68,13 @@
                               <Insets left="30.0" />
                            </HBox.margin>
                         </TextField>
-                        <Label text="Min">
+                        <Label text="Min" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="5.0" top="5.0" />
                            </HBox.margin>
+                           <font>
+                              <Font name="Impact" size="15.0" />
+                           </font>
                         </Label>
                      </children>
                      <VBox.margin>
