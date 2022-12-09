@@ -208,6 +208,10 @@ public class ModelFactoryController implements ModelFactoryControllerService {
     public void fillSubLists(Session session, ObservableList<Exercise> exercises, ObservableList<Member> members){
         gymService.getSessionService().fillSubLists(session, exercises, members);
     }
+    //clear subLists
+    public void resetSubList(){
+        gymService.getSessionService().resetSubList();
+    }
 
     //CRUD Session
     public Session createSession(String name, String trainerID, LocalDate date, String timeStart, String timeEnd) throws InputException, IOException, notFoundExc{

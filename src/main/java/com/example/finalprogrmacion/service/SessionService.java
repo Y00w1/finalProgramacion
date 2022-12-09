@@ -26,6 +26,7 @@ public interface SessionService {
     ObservableList<Member> fillObLiMembers();
     //Fill both sublist
     void fillSubLists(Session session, ObservableList<Exercise> exercises, ObservableList<Member> members);
+    void resetSubList();
 
     void setSessionsPer(SessionPer sessionsPer);
     HashMap<String, Exercise> getExercisesSession();

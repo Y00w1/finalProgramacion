@@ -27,6 +27,8 @@ public class SessionServiceImpl implements SessionService {
     HashMap<Integer, Session> sessions = new HashMap<>();
     HashMap<String, Exercise> exercisesSession = new HashMap<>();
     HashMap<String, Member> membersSession = new HashMap<>();
+    HashMap<String, Exercise> auxExercisesSession = new HashMap<>();
+    HashMap<String, Member> auxMembersSession = new HashMap<>();
 
     //PERSISTENCE
     SessionPer sessionsPer;
@@ -51,9 +53,11 @@ public class SessionServiceImpl implements SessionService {
     //Persistence
     @Override
     public void loadSessions() {
-        /*for(Session session : sessionsPer.getSessions().values()){
-            sessions.put(session.getID(), session);
-        }*/
+        if (!(sessionsPer == null)){
+            for(Session session : sessionsPer.getSessions().values()){
+                sessions.put(session.getID(), session);
+            }
+        }
     }
     //List for the tables
     //Sessions
@@ -134,17 +138,27 @@ public class SessionServiceImpl implements SessionService {
             ID = 0;
         }
         ID++;
-        HashMap<String, Exercise> auxExercisesSession = exercisesSession;
-        HashMap<String, Member> auxMembersSession = membersSession;
+        //auxExercisesSession = exercisesSession;
+        //auxMembersSession = membersSession;
+        fillAuxSubList();
         Session session = new Session(ID, name, trainer, auxExercisesSession, auxMembersSession, date, time);
         //System.out.println(auxMembersSession.size() +" - "+ auxExercisesSession.size() );
-        //sessionsPer.getSessions().put(ID,session);
         sessions.put(ID, session);
         Persistence.saveSessionsXMLResource(sessionsPer);
-        resetSubList();
+        //sessionsPer.getSessions().put(ID,session);
+
+        //resetSubList();
         return session;
     }
-    private void resetSubList(){
+    private void fillAuxSubList(){
+        for (Exercise exercise: exercisesSession.values()){
+            auxExercisesSession.put(exercise.getId(), exercise);
+        }
+        for (Member member: membersSession.values()){
+            auxMembersSession.put(member.getID(), member);
+        }
+    }
+    public void resetSubList(){
         exercisesSession.clear();
         membersSession.clear();
     }
@@ -157,8 +171,8 @@ public class SessionServiceImpl implements SessionService {
 
         sessions.replace(id, new Session(id, name, trainer, exercisesSession, membersSession, date, time));
         Persistence.saveSessionsXMLResource(sessionsPer);
-        exercisesSession.clear();
-        membersSession.clear();
+        //exercisesSession.clear();
+        //membersSession.clear();
     }
 
     @Override

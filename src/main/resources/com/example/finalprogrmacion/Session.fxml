@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="620.0" maxWidth="1030.0" minHeight="620.0" minWidth="1030.0" prefHeight="620.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalprogrmacion.controller.SessionController">
+<AnchorPane maxHeight="620.0" maxWidth="1030.0" minHeight="620.0" minWidth="1030.0" prefHeight="620.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.finalprogrmacion.controller.SessionController">
    <children>
       <BorderPane prefHeight="620.0" prefWidth="1030.0">
          <top>
@@ -126,7 +126,7 @@
                   </HBox>
                   <HBox prefHeight="49.0" prefWidth="532.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#createSession" text="Crear">
+                        <Button mnemonicParsing="false" onAction="#createSession" onMouseReleased="#clearSubLists" text="Crear">
                            <HBox.margin>
                               <Insets left="170.0" right="5.0" />
                            </HBox.margin>

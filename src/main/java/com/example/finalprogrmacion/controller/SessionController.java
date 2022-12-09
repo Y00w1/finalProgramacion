@@ -30,7 +30,7 @@ import java.util.ResourceBundle;
 
 public class SessionController implements Initializable {
     ModelFactoryController mfc = ModelFactoryController.getInstance();
-    //ClassVal classVal = new ClassVal();
+    SessionPer sessionsPer = new SessionPer();
     ObservableList<Session> sessionsOb = FXCollections.observableArrayList();
     ObservableList<Member> membersOb = FXCollections.observableArrayList();
     ObservableList<Exercise> exercisesOb = FXCollections.observableArrayList();
@@ -105,7 +105,7 @@ public class SessionController implements Initializable {
         colIDExercise.setCellValueFactory(new PropertyValueFactory<>("id"));
         colNameExercise.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-        SessionPer sessionsPer = Persistence.loadSessionsXMLResource();
+        sessionsPer = Persistence.loadSessionsXMLResource();
         mfc.setSessionsPer(sessionsPer);
 
         obLiTime.addAll(time);
@@ -217,6 +217,11 @@ public class SessionController implements Initializable {
         mfc.fillSubLists(session, exercisesOb, membersOb);
         tbExercise.setItems(exercisesOb);
         tbMember.setItems(membersOb);
+    }
+
+    @FXML
+    void clearSubLists(MouseEvent event) {
+        mfc.resetSubList();
     }
 
 }

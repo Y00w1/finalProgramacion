@@ -54,7 +54,7 @@ public class Persistence {
         String content = "";
         for(Member member: memberList.values()){
             content += member.getID()+","+member.getName()+","+member.getLastName()+","+member.getEmail()+
-                    ","+member.getPassword()+"\n";
+                    ","+member.getPassword()+","+member.getWeight()+","+member.getHeight()+","+member.getAge()+ "\n";
         }
         UtilDoc.saveDoc(FILE_PATH_MEMBERS, content, false);
     }
@@ -76,6 +76,9 @@ public class Persistence {
             myMember.setLastName(line.split(",")[2]);
             myMember.setEmail(line.split(",")[3]);
             myMember.setPassword(line.split(",")[4]);
+            myMember.setWeight(Double.parseDouble(line.split(",")[5]));
+            myMember.setHeight(Double.parseDouble(line.split(",")[6]));
+            myMember.setAge(Integer.parseInt(line.split(",")[7]));
 
             members.put(myMember.getID(), myMember);
         }
